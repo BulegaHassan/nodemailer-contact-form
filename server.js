@@ -30,7 +30,9 @@ app.post("/send", function (req, res) {
     from: `${req.body.mailerState.name}`,
     to: process.env.EMAIL,
     subject: `Message from: ${req.body.mailerState.email}`,
-    text: `${req.body.mailerState.message} ${req.body.mailerState.services}`,
+    text: `
+    Service: ${req.body.mailerState.services},
+    Message: ${req.body.mailerState.message} `
   };
 app.get('/health', (req,res)=> {
   res.send(`The app runs normally`)
