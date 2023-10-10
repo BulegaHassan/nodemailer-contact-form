@@ -32,7 +32,9 @@ app.post("/send", function (req, res) {
     subject: `Message from: ${req.body.mailerState.email}`,
     text: `${req.body.mailerState.message} ${req.body.mailerState.services}`,
   };
-
+app.get('/health', (req,res)=> {
+  res.send(`The app runs normally`)
+})
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
       res.json({
